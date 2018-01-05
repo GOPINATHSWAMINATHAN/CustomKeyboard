@@ -6,7 +6,6 @@
     android:verticalGap="0px">
 
     <Row>
-
         <Key
             android:codes="49"
             android:keyEdgeFlags="left"
@@ -17,69 +16,60 @@
         <Key
             android:codes="51"
             android:keyLabel="3" />
-
         <Key
             android:codes="52"
             android:keyLabel="4" />
-
         <Key
             android:codes="53"
             android:keyLabel="5" />
-
         <Key
             android:codes="54"
             android:keyLabel="6" />
-
         <Key
             android:codes="55"
             android:keyLabel="7" />
-
         <Key
             android:codes="56"
             android:keyLabel="8" />
-
         <Key
             android:codes="57"
             android:keyLabel="9" />
-        <key
-            android:code="48"
+        <Key
+            android:codes="48"
             android:keyEdgeFlags="right"
             android:keyLabel="0" />
-
     </Row>
-
 
     <Row>
         <Key
-            android:codes="97"
+            android:codes="113"
             android:keyEdgeFlags="left"
             android:keyLabel="q" />
         <Key
             android:codes="119"
             android:keyLabel="w" />
-
-        <key
+        <Key
             android:codes="101"
             android:keyLabel="e" />
-        <key
+        <Key
             android:codes="114"
             android:keyLabel="r" />
-        <key
+        <Key
             android:codes="116"
             android:keyLabel="t" />
-        <key
+        <Key
             android:codes="121"
             android:keyLabel="y" />
-        <key
+        <Key
             android:codes="117"
             android:keyLabel="u" />
-        <key
+        <Key
             android:codes="105"
             android:keyLabel="i" />
-        <key
+        <Key
             android:codes="111"
             android:keyLabel="o" />
-        <key
+        <Key
             android:codes="112"
             android:keyEdgeFlags="right"
             android:keyLabel="p" />
@@ -182,6 +172,5 @@
             android:keyWidth="20%p" />
 
     </Row>
-
 
 </Keyboard>
