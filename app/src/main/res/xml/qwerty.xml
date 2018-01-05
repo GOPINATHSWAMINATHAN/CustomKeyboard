@@ -80,9 +80,107 @@
             android:codes="111"
             android:keyLabel="o" />
         <key
-            android:keyLabel="p"
+            android:codes="112"
             android:keyEdgeFlags="right"
-            android:codes="112"/>
+            android:keyLabel="p" />
+    </Row>
+
+    <Row>
+        <Key
+            android:codes="97"
+            android:keyEdgeFlags="left"
+            android:keyLabel="a" />
+        <Key
+            android:codes="115"
+            android:keyLabel="s" />
+        <Key
+            android:codes="100"
+            android:keyLabel="d" />
+        <Key
+            android:codes="102"
+            android:keyLabel="f" />
+        <Key
+            android:codes="103"
+            android:keyLabel="g" />
+        <Key
+            android:codes="104"
+            android:keyLabel="h" />
+        <Key
+            android:codes="106"
+            android:keyLabel="j" />
+        <Key
+            android:codes="107"
+            android:keyLabel="k" />
+        <Key
+            android:codes="108"
+            android:keyLabel="l" />
+        <Key
+            android:codes="35,64"
+            android:keyEdgeFlags="right"
+            android:keyLabel="\# \@" />
+    </Row>
+
+    <Row>
+        <Key
+            android:codes="-1"
+            android:keyEdgeFlags="left"
+            android:keyLabel="CAPS" />
+        <Key
+            android:codes="122"
+            android:keyLabel="z" />
+        <Key
+            android:codes="120"
+            android:keyLabel="x" />
+        <Key
+            android:codes="99"
+            android:keyLabel="c" />
+        <Key
+            android:codes="118"
+            android:keyLabel="v" />
+        <Key
+            android:codes="98"
+            android:keyLabel="b" />
+        <Key
+            android:codes="110"
+            android:keyLabel="n" />
+        <Key
+            android:codes="109"
+            android:keyLabel="m" />
+        <Key
+            android:codes="46"
+            android:keyLabel="." />
+        <Key
+            android:codes="63,33,58"
+            android:keyEdgeFlags="right"
+            android:keyLabel="\? ! :" />
+    </Row>
+
+    <Row android:rowEdgeFlags="bottom">
+        <Key
+            android:codes="44"
+            android:keyEdgeFlags="left"
+            android:keyLabel=","
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="47"
+            android:keyLabel="/"
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyLabel="SPACE"
+            android:keyWidth="40%p" />
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyLabel="DEL"
+            android:keyWidth="20%p" />
+        <Key
+            android:codes="-4"
+            android:keyEdgeFlags="right"
+            android:keyLabel="DONE"
+            android:keyWidth="20%p" />
+
     </Row>
 
 
