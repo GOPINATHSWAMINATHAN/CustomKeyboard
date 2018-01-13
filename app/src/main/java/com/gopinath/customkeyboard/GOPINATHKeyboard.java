@@ -2,6 +2,7 @@ package com.gopinath.customkeyboard;
 
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -23,6 +24,8 @@ public class GOPINATHKeyboard extends InputMethodService implements KeyboardView
 public View onCreateInputView()
 {
     kv=(KeyboardView)getLayoutInflater().inflate(R.layout.keyboard,null);
+   Drawable d=getResources().getDrawable(R.drawable.spiderback);
+   kv.setBackground(d);
     keyboard=new Keyboard(this,R.xml.qwerty);
     kv.setKeyboard(keyboard);
     kv.setOnKeyboardActionListener(this);
