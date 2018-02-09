@@ -7,31 +7,66 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
+import android.os.Handler;
 import android.os.IBinder;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethod;
+import android.widget.TextView;
 
-public class GOPINATHKeyboard extends InputMethodService implements KeyboardView.OnKeyboardActionListener{
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class GOPINATHKeyboard extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
     private KeyboardView kv;
     private Keyboard keyboard;
+    Drawable d;
+    private boolean isCaps = false;
+    final Handler handler_interact = new Handler();
 
-    private boolean isCaps=false;
     public GOPINATHKeyboard() {
     }
-public View onCreateInputView()
-{
-    kv=(KeyboardView)getLayoutInflater().inflate(R.layout.keyboard,null);
-   Drawable d=getResources().getDrawable(R.drawable.spiderback);
-   kv.setBackground(d);
-    keyboard=new Keyboard(this,R.xml.qwerty);
-    kv.setKeyboard(keyboard);
-    kv.setOnKeyboardActionListener(this);
-    return kv;
 
-}
+
+    public View onCreateInputView() {
+        kv = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
+        d = getResources().getDrawable(R.drawable.spiderback);
+        kv.setBackground(d);
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                updateGUI();
+            }
+
+        }, 300);
+
+        keyboard = new Keyboard(this, R.xml.qwerty);
+        kv.setKeyboard(keyboard);
+        kv.setOnKeyboardActionListener(this);
+        return kv;
+
+    }
+
+    private void updateGUI() {
+        handler_interact.post(runnable_interact);
+    }
+
+    final Runnable runnable_interact = new Runnable() {
+        @Override
+        public void run() {
+            d = getResources().getDrawable(R.drawable.maxresdefault);
+            kv.setBackground(d);
+
+            d = getResources().getDrawable(R.drawable.spiderback);
+            kv.setBackground(d);
+            d = getResources().getDrawable(R.drawable.maxresdefault);
+            kv.setBackground(d);
+        }
+    };
 
     @Override
     public void onPress(int primaryCode) {
@@ -47,10 +82,9 @@ public View onCreateInputView()
     public void onKey(int primaryCode, int[] keyCodes) {
         InputConnection ic = getCurrentInputConnection();
         playClick(primaryCode);
-        switch (primaryCode)
-        {
+        switch (primaryCode) {
             case Keyboard.KEYCODE_DELETE:
-                ic.deleteSurroundingText(1,0);
+                ic.deleteSurroundingText(1, 0);
                 break;
             case Keyboard.KEYCODE_SHIFT:
                 isCaps = !isCaps;
@@ -58,21 +92,20 @@ public View onCreateInputView()
                 kv.invalidateAllKeys();
                 break;
             case Keyboard.KEYCODE_DONE:
-                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_ENTER));
+                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             default:
-                char code = (char)primaryCode;
-                if(Character.isLetter(code) && isCaps)
+                char code = (char) primaryCode;
+                if (Character.isLetter(code) && isCaps)
                     code = Character.toUpperCase(code);
-                ic.commitText(String.valueOf(code),1);
+                ic.commitText(String.valueOf(code), 1);
         }
     }
 
     private void playClick(int i) {
 
-        AudioManager am = (AudioManager)getSystemService(AUDIO_SERVICE);
-        switch(i)
-        {
+        AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        switch (i) {
             case 32:
                 am.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
                 break;
@@ -83,7 +116,8 @@ public View onCreateInputView()
             case Keyboard.KEYCODE_DELETE:
                 am.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
                 break;
-            default: am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
+            default:
+                am.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
         }
     }
 
@@ -111,4 +145,6 @@ public View onCreateInputView()
     public void swipeUp() {
 
     }
+
+
 }
